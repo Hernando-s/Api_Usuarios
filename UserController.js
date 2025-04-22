@@ -132,6 +132,33 @@ function deleteUser(res, id) {
   });
 
 }
+function searchUser(req, res) {
+  const { nome,email, campo } = req.query;
 
-module.exports = { getUser, addUser, updateUser, deleteUser};
+  fs.readFile(dataPath, 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).send('Erro ao ler os dados');
+    } else {
+      let users = JSON.parse(data);
+
+      if (nome) {
+        users = users.filter(u => u.nome.toLowerCase().includes(nome.toLowerCase()));
+      }
+      if (email) {
+        users = users.filter(u => u.email.toLowerCase().includes(email.toLowerCase()));
+      }
+
+      // Novo filtro: retornar somente nome ou email
+      if (campo === 'nome') {
+        users = users.map(u => ({ nome: u.nome }));
+      } else if (campo === 'email') {
+        users = users.map(u => ({ email: u.email }));
+      }
+
+      res.status(200).json(users);
+    }
+  });
+}
+
+module.exports = { getUser, addUser, updateUser, deleteUser,searchUser};
 
