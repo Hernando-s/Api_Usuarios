@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "Pedro",
+    "email": "pedro@gmail.com",
+    "senha": "12345",
+    "id": 1
+  },
+  {
+    "nome": "Maria",
+    "email": "maria@gmail.com",
+    "senha": "12345",
+    "id": 2
+  },
+  {
+    "nome": "João",
+    "email": "joao@gmail.com",
+    "senha": "12345",
+    "id": 3
+  },
+  {
+    "nome": "Maria Ferreira",
+    "email": "maria.ferreira@gmail.com",
+    "senha": "12345",
+    "id": 4
+  }
+]

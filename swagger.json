@@ -1,0 +1,95 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Users API",
+    "description": "API para gerenciamento de usuarios.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Obter a lista de usuarios",
+        "responses": {
+          "200": {
+            "description": "Lista de usuarios retornada com sucesso"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adicionar um novo usuario",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": { "type": "string" },
+                "email": { "type": "string" },
+                "senha": { "type": "string" }
+              },
+              "required": ["nome", "email","senha"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Usuario adicionado com sucesso"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "summary": "Atualizar um usuario existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": { "type": "string" },
+                "email": { "type": "string" },
+                "senha": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario atualizado com sucesso"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar um usuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario deletado com sucesso"
+          }
+        }
+      }
+    }
+  }
+}
